@@ -39,14 +39,14 @@ import (
 	"google.golang.org/grpc"
 	"logur.dev/logur"
 
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga"
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/tododriver"
-	"github.com/sagikazarmark/modern-go-application/internal/common/commonadapter"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/appkit"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/database"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/gosundheit"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/log"
-	"github.com/sagikazarmark/modern-go-application/internal/platform/watermill"
+	"github.com/bsnisar/acceed/internal/app/acceed"
+	"github.com/bsnisar/acceed/internal/app/acceed/todo/tododriver"
+	"github.com/bsnisar/acceed/internal/common/commonadapter"
+	"github.com/bsnisar/acceed/internal/platform/appkit"
+	"github.com/bsnisar/acceed/internal/platform/database"
+	"github.com/bsnisar/acceed/internal/platform/gosundheit"
+	"github.com/bsnisar/acceed/internal/platform/log"
+	"github.com/bsnisar/acceed/internal/platform/watermill"
 )
 
 // Provisioned by ldflags
@@ -62,10 +62,10 @@ const (
 	//
 	// It identifies the application itself, the actual instance needs to be identified via environment
 	// and other details.
-	appName = "mga"
+	appName = "acceed"
 
 	// friendlyAppName is the visible name of the application.
-	friendlyAppName = "Modern Go Application"
+	friendlyAppName = "Acceed"
 )
 
 func main() {
@@ -314,12 +314,12 @@ func main() {
 				appkiterrors.IsServiceError, // filter out service errors
 			)
 
-			mga.InitializeApp(httpRouter, grpcServer, publisher, config.App.Storage, db, logger, errorHandler)
+			acceed.InitializeApp(httpRouter, grpcServer, publisher, config.App.Storage, db, logger, errorHandler)
 
 			h, err := watermill.NewRouter(logger)
 			emperror.Panic(err)
 
-			err = mga.RegisterEventHandlers(h, subscriber, logger)
+			err = acceed.RegisterEventHandlers(h, subscriber, logger)
 			emperror.Panic(err)
 
 			group.Add(func() error { return h.Run(context.Background()) }, func(e error) { _ = h.Close() })

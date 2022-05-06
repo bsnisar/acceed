@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/todoadapter/ent"
+	"github.com/bsnisar/acceed/internal/app/mga/todo/todoadapter/ent"
 )
 
 // The TodoItemFunc type is an adapter to allow the use of ordinary

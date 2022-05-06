@@ -5,9 +5,9 @@ package enttest
 import (
 	"context"
 
-	"github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/todoadapter/ent"
+	"github.com/bsnisar/acceed/internal/app/mga/todo/todoadapter/ent"
 	// required by schema hooks.
-	_ "github.com/sagikazarmark/modern-go-application/internal/app/mga/todo/todoadapter/ent/runtime"
+	_ "github.com/bsnisar/acceed/internal/app/mga/todo/todoadapter/ent/runtime"
 
 	"entgo.io/ent/dialect/sql/schema"
 )

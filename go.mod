@@ -1,4 +1,4 @@
-module github.com/sagikazarmark/modern-go-application
+module github.com/bsnisar/acceed
 
 go 1.17
 
